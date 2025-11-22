@@ -1,3 +1,4 @@
+<%@page import="modelo.Comercial"%>
 <%@page import="modelo.Bd"%>
 <%@page import="modelo.Producto"%>
 <%@page import="java.util.ArrayList"%>
@@ -7,17 +8,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Documento sin título</title>
     </head>
-
-    <%
-        ServletContext contexto = getServletContext();
-
-        String opcion;
-        if (request.getParameter("opcion") != null) {
-            opcion = request.getParameter("opcion");
-        } else {
-            opcion = "";
-        }
-    %>
 
     <body>
 
@@ -50,8 +40,10 @@
                     <td>
                     </td>
                     <td>
-                        <a href="listado-productos.jsp">
-                            <img src="imagenes/listado-productos.jpg" width="180" height="80"/>
+                    </td>
+                    <td>
+                        <a href="listado-comerciales.jsp">
+                            <img src="imagenes/listado-comerciales.jpg" width="180" height="80"/>
                         </a>
                     </td>
                 </tr>
@@ -60,44 +52,40 @@
                     <td>
                     </td>
                     <td>
-                        <a href="nuevo-producto.jsp">
-                            <img src="imagenes/nuevo-producto.jpg" width="180" height="80"/>
+                    </td>
+                    <td>
+                        <a href="alta-comercial.jsp">
+                            <img src="imagenes/alta-comerciales.jpg" width="180" height="80"/>
                         </a>
                     </td>
                 </tr>
-                <tr align="center">
-                    <td>
-                    </td>
-                    <td>
-                        <a href="modificar-producto.jsp">
-                            <img src="imagenes/modificar-producto.jpg" width="180" height="80"/>
-                        </a>
-                    </td>
-                </tr>
+
                 <tr>
                     <td colspan="7" bgcolor="#CCCCCC">&nbsp;</td>
                 </tr>
+                
+                <table border="1px" align="center">
+                <tr>
+                    <th>Código</th>
+                    <th>Nombre</th>
+                    <th>Salario</th>
+                    <th>Hijos</th>
+                </tr>
+                <%
+                    ArrayList<Comercial> listaComerciales = new ArrayList<Comercial>();
+                    listaComerciales = Bd.consultarComerciales();
+                    for (int x = 0; x < listaComerciales.size(); x++) {%>
+                <tr>
+                    <td><%=listaComerciales.get(x).getCodigo().toString()%></td>
+                    <td><%=listaComerciales.get(x).getNombre()%></td>
+                    <td><%=listaComerciales.get(x).getSalario()%></td>
+                    <td><%=listaComerciales.get(x).getHijos()%></td>
+                </tr>
+                <%}%>
+                </table>
 
                 <tr>
-                    <form action="datos-modificar-producto.jsp" method="post">
-                        <td colspan="7" align="center">
-                            <h3>Modificar producto</h3>
-
-                            <select name="sel" id="sel">
-                                <%
-                                    ArrayList<Producto> listaProductos = new ArrayList<Producto>();
-                                    listaProductos = modelo.Bd.consultarProductos();
-
-                                    for (int x = 0; x < listaProductos.size(); x++) {%>
-                                <option value="<%=listaProductos.get(x).getRef().toString()%>">
-                                    <%=listaProductos.get(x).getNombre().toString()%> - <%=listaProductos.get(x).getDescripcion().toString()%>
-                                </option>
-                                <% }%>
-                            </select>
-                            <input type="submit" value="Aceptar"></input>
-                            <input type="reset" value="Cancelar"></input>
-                        </td>
-                    </form>
+                    <td colspan="7">&nbsp;</td>
                 </tr>
                 <tr>
                     <td colspan="7" bgcolor="#CCCCCC">&nbsp;</td>

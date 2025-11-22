@@ -12,6 +12,14 @@
         <servlet-name>ServletProducto</servlet-name>
         <servlet-class>servlets.ServletProducto</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletModProducto</servlet-name>
+        <servlet-class>servlets.ServletModProducto</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletComerciales</servlet-name>
+        <servlet-class>servlets.ServletComerciales</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletLogin</servlet-name>
         <url-pattern>/ServletLogin</url-pattern>
@@ -23,6 +31,14 @@
     <servlet-mapping>
         <servlet-name>ServletProducto</servlet-name>
         <url-pattern>/ServletProducto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletModProducto</servlet-name>
+        <url-pattern>/ServletModProducto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletComerciales</servlet-name>
+        <url-pattern>/ServletComerciales</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

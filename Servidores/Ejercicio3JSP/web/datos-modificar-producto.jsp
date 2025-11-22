@@ -79,30 +79,38 @@
                 </tr>
 
                 <tr>
-                    <form action="datos-modificar-producto.jsp" method="post">
+                    <form action="ServletModProducto" method="post">
                         <td colspan="7" align="center">
                             <h3>Modificar producto</h3>
 
-                            <select name="sel" id="sel">
-                                <%
-                                    ArrayList<Producto> listaProductos = new ArrayList<Producto>();
-                                    listaProductos = modelo.Bd.consultarProductos();
+                            <%
+                                String ref = request.getParameter("sel");
+                                ArrayList<Producto> listaProductos = modelo.Bd.consultarProductos();
 
-                                    for (int x = 0; x < listaProductos.size(); x++) {%>
-                                <option value="<%=listaProductos.get(x).getRef().toString()%>">
-                                    <%=listaProductos.get(x).getNombre().toString()%> - <%=listaProductos.get(x).getDescripcion().toString()%>
-                                </option>
-                                <% }%>
-                            </select>
-                            <input type="submit" value="Aceptar"></input>
-                            <input type="reset" value="Cancelar"></input>
-                        </td>
-                    </form>
-                </tr>
-                <tr>
-                    <td colspan="7" bgcolor="#CCCCCC">&nbsp;</td>
-                </tr>
-        </table>
+                                for (int x = 0; x < listaProductos.size(); x++) {
+                                    if (ref.equals(listaProductos.get(x).getRef())) {
+                            %>
 
-    </body>
-</html>
+                            <label>Referencia</label>
+                            <input type="text" name="ref" id="ref" value="<%=listaProductos.get(x).getRef()%>" readonly></input><br><br>
+                                    <label>Nombre</label>
+                                    <input type="text" name="nombre" id="nombre"></input><br><br>
+                                            <label>Descripción</label>
+                                            <input type="text" name="desc" id="desc"></input><br><br>
+                                                    <label>Precio</label>
+                                                    <input type="text" name="precio" id="precio"></input><br><br>
+                                                            <label>Descuento</label>
+                                                            <input type="text" name="dto" id="dto"></input><br><br>
+                                                                    <input type="submit" value="Aceptar"></input>
+                                                                    <input type="reset" value="Cancelar"></input>
+                                                                    </td>
+                                                                    </form>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td colspan="7" bgcolor="#CCCCCC">&nbsp;</td>
+                                                                    </tr>
+                                                                    </table>
+                                                                    <%  }
+                                                                }%>
+                                                                    </body>
+                                                                    </html>

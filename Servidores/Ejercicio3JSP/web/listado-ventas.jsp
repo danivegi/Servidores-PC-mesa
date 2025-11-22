@@ -4,19 +4,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Documento sin t?tulo</title>
+<title>Documento sin título</title>
 </head>
 
-    <%
-      ServletContext contexto = getServletContext();
-      
-      String opcion;
-      if (request.getParameter("opcion") != null) {
-          opcion = request.getParameter("opcion");
-      } else {
-          opcion = "";
-      }
-    %>
     
 <body>
 
@@ -25,7 +15,7 @@
     <td colspan="7" bgcolor="#333333">&nbsp;</td>
   </tr>
   <tr align="center">
-    <td colspan="7" bgcolor="#CCCCCC"><h1>APLICACI?N DE GESTI?N COMERCIAL</h1></td>
+    <td colspan="7" bgcolor="#CCCCCC"><h1>APLICACIÓN DE GESTIÓN COMERCIAL</h1></td>
   </tr>
   
   <tr align="center">
@@ -47,7 +37,7 @@
       
     <tr align="center">
         <td>
-            <a href="ventas.jsp?opcion=listado">
+            <a href="listado-ventas.jsp">
             <img src="imagenes/listado-ventas.jpg" width="180" height="80"/>
             </a>
         </td>
@@ -55,7 +45,7 @@
       
     <tr align="center">
         <td>
-            <a href="ventas.jsp?opcion=nueva">
+            <a href="nuevaVenta.jsp">
             <img src="imagenes/nueva-venta.jpg" width="180" height="80"/>
             </a>
         </td>

@@ -178,5 +178,50 @@ public class Bd {
             return false;
         }
     }
+    
+    public static boolean nuevoComercial(Comercial c) {
+        ArrayList<Comercial> listaComerciales = new ArrayList<Comercial>();
+        
+        String sql = "INSERT INTO comerciales (codigo, nombre, salario, hijos, fNacimiento) VALUES (?,?,?,?,?);";
+        
+        try (Connection cnn = CrearConexion();
+                PreparedStatement ps = cnn.prepareStatement(sql)) {
+            
+            ps.setString(1, c.getCodigo());
+            ps.setString(2, c.getNombre());
+            ps.setDouble(3, c.getSalario());
+            ps.setInt(4, c.getHijos());
+            ps.setDate(5, java.sql.Date.valueOf(c.getfNacimineto()));
+            
+            ps.executeUpdate();
+            return true;
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
+    public static boolean modificarProducto(Producto p) {
+        
+        String sql = "UPDATE productos SET nombre = ?, descripcion = ?, precio = ?, descuento = ? WHERE referencia LIKE ?;";
+        
+        try (Connection cnn = CrearConexion();
+                PreparedStatement ps = cnn.prepareStatement(sql)) {
+            
+            ps.setString(1, p.getNombre());
+            ps.setString(2, p.getDescripcion());
+            ps.setDouble(3, p.getPrecio());
+            ps.setInt(4, p.getDto());
+            ps.setString(5, p.getRef());
+            
+            ps.executeUpdate();
+            return true;
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 
 }
